@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>Spring B반 2조 팀원 소개</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Serif KR', serif;
+        }
+        .pagetitle {
+            width: 800px;
+            height: 50px;
+
+            background-color: plum;
+            color: white;
+
+            text-align: center;
+
+            background-image: url("");
+            background-size: cover;
+            background-position: center;
+
+            border-radius: 10px;
+
+            margin: auto;
+            margin-top: 10px;
+        }
+        .wrap {
+            width: 95%;
+
+            margin: auto;
+        }
+        .intro {
+            width: 800px;
+            height: 250px;
+
+            color: black;
+
+            border: 2px solid plum;
+            border-radius: 10px;
+
+            margin: auto;
+            margin-top: 10px;
+        }
+        .card-box {
+            margin-bottom: 10px;
+        }
+        .comment {
+            width: 500px;
+            color: gray;
+
+            text-align: center;
+
+            margin: auto;
+            margin-top: 10px;
+        }
+        .btn {
+            color: white;
+
+            margin-top: 10px;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            show_comment();
+        });
+        function show_comment() {
+            $.ajax({
+                type: 'GET',
+                url: '/sangwook/get',
+                data: {},
+                success: function (response) {
+                    let rows = response['comments']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let comment = rows[i]['comment']
+
+                        let temp_html = `<blockquote class="blockquote mb-0">
+                                            <p>${name}</p>
+                                            <footer class="blockquote-footer">${comment}</footer>
+                                            <br>
+                                        </blockquote>`
+                        $('#card-box').append(temp_html)
+                    }
+                }
+            });
+        }
+        function save_comment() {
+            let name = $('#name').val()
+            let comment = $('#comment').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/sangwook/post',
+                data: { name_give: name, comment_give: comment },
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="pagetitle">
+        <h1>팀원을 소개합니다!</h1>
+    </div>
+    <div class="intro" style="max-width: 800px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">2조 봄바람 팀원 박상욱입니다.<br>
+                        INTJ인 저는 분석하는 것을 즐기고 완벽을 추구하는데요,<br>
+                        그래서 협업 과정에서 어떠한 문제가 발생하면 먼저 원인을 파악한 다음,<br>
+                        해결 방안을 제시하고 빠뜨린 부분이 없는지 꼼꼼하게 살핍니다.<br>
+                        하지만 아직 부족한 점이 많아서 팀원 분들의 도움을 많이 많고 있습니다.<br>
+                        끝으로 제 블로그 주소를 남깁니다.<br>
+                        시간 여유 있으실 때 한번씩 들러 주시면 감사하겠습니다!
+                    </p>
+                    <p>
+                        https://t1021.tistory.com/
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comment">
+        <h2>방명록</h2>
+        <p>여러분의 발자국을 남겨 주세요!</p>
+        <div id="card-box">
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="name" placeholder="name@example.com">
+            <label for="name">닉네임</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="comment"></textarea>
+            <label for="comment">내용</label>
+        </div>
+        <button onclick="save_comment()" type="button" class="btn btn-dark">등록하기</button>
+    </div>
+</div>
+</body>
+</html>

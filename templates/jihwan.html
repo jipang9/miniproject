@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link href="static/styles.css" rel="stylesheet"/>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <title>Team 봄바람 - 김지환 Page</title>
+        <script>
+            $(document).ready(function () {
+                show_comment()
+            });
+
+            function save_comment() {
+                let id = Date.now().toString()
+                let name = $('#name').val()
+                let comment = $('#comment').val()
+                $.ajax({
+                    type: 'POST',
+                    url: '/jihwan/post',
+                    data: { id_give:id, name_give:name, comment_give:comment},
+                    success: function (response) {
+                        window.location.reload()
+                    }
+                })
+                alert("등록 성공")
+            }
+
+            function delete_comment(id) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/jihwan/delete',
+                    data: {id_delete:id},
+                    success: function (response) {
+                        window.location.reload()
+                    }
+                })
+                alert('삭제완료')
+            }
+
+            function show_comment() {
+                $.ajax({
+                    type: "GET",
+                    url: "/jihwan/get",
+                    data: {},
+                    success: function (response) {
+                        let rows = response['comment']
+                        for (let i = 0; i < rows.length; i++) {
+                            let name = rows[i]['name']
+                            let content = rows[i]['comment']
+                            let id = rows[i]['id']
+
+                            let temp_html = `<div class="card">
+                                                    <div class="card-body">
+                                                        <blockquote class="blockquote mb-0">
+                                                            <p>${content}</p>
+                                                            <footer class="blockquote-footer">${name}</footer>
+                                                        </blockquote>
+                                                        <button id = 'output' onclick="delete_comment(${id})" type="button" class="btn btn-dark">방명록 삭제</button>
+                                                    </div>
+                                                </div>`
+                            $('#content-list').append(temp_html)
+                        }
+                    }
+                })
+            }
+
+
+        </script>
+</head>
+<body id="page-top">
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">김지환</span>
+        <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                                             src="static/image/MyPic.jpg" alt="..."/></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#comment">Comment</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid p-0">
+
+    <!-- About-->
+    <section class="resume-section" id="about">
+        <div class="resume-section-content">
+            <h1 class="mb-0">
+                <span class="text-primary">'성장'하는 내일을 위해!</span>
+            </h1>
+            <br><br>
+            <div class="subheading mb-5">
+                안녕하세요 반갑습니다. <b>Team 봄바람의 팀장 김지환입니다.</b><br>
+                언제나 익숙한 것보단 새로운 것에 도전하려 하며,그 과정 속에서 느낀점이 있다면 따로 기록하고자 합니다.<br>
+                그래서 도전을 크게 두려워하지 않으며, 주관이 강합니다.<br>
+                <b>성장</b>이라는 단어에 중점을 두며, 더 나은 내일을 위해 매사 <b>최선</b>을 다합니다.<br>
+                <b>맡은 바에 대해선 최선을 다해야 스스로 만족감을 느낍니다.</b><br>
+            </div>
+            <br>
+            <h5>아래는 저의 깃주소, SNS 주소, 블로그 주소입니다. </h5>
+            <div class="social-icons">
+                <a class="social-icon" href="https://github.com/jipang9"><i class="fa-brands fa-github"></i></a>
+                <a class="social-icon" href="https://www.instagram.com/jipang9/"><i class="fab fa-instagram"></i></a>
+                <a class="social-icon" href="https://jipang9-greedy-pot.tistory.com/"><i
+                        class="fa-sharp fa-solid fa-blog"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="m-0"/>
+
+    <!-- Skills-->
+    <section class="resume-section" id="skills">
+        <div class="resume-section-content">
+            <h2 class="mb-5">Skills</h2>
+            <div class="subheading mb-3">Programming Languages & Tools</div>
+            <div><b>외에도 필요시 다양한 툴들을 사용할 수 있으며, 잘 모르는 부분에 대해선 스스로 학습하거나, 구글 선생님을 찾습니다.</b></div>
+            <ul class="list-inline dev-icons">
+                <img src="static/image/java.png" width="50">
+                <img src="static/image/html.png" width="50">
+                <img src="static/image/database.png" width="50">
+                <img src="static/image/springBoot.png" width="50">
+                <img src="static/image/mariadb.png" width="50">
+                <img src="static/image/cLang.png" width="80">
+            </ul>
+        </div>
+    </section>
+    <hr class="m-0"/>
+    <!-- Interests-->
+    <section class="resume-section" id="interests">
+        <div class="resume-section-content">
+            <h2 class="mb-4">Interests</h2>
+            <h4>취미를 잃어버린 '나' </h4>
+            <p class="mb-0">
+                과거와 다르게 요즘엔 흥미, 취미에 대해 생각을 했을 때, 크게 와닿는데 없습니다.<br>
+                그나마 제일 꾸준히 하는 것이 <b>운동</b>인데, <b>웨이트보다는 산책과 런닝을 즐겨</b>합니다.<br>
+                또 최근엔 youtube에서 <b>중독성 있는 힙합이나 감성 힙합, 인디 밴드 노래를 즐겨 듣습니다.</b></p>
+            <br><br>
+            <h3>평생의 소원이 하나 있습니다.</h3>
+            <h4>바로 제가 제일 좋아하는 노래의 가수인 LeeSSang 콘서트에 가는 것인데... </h4>
+            <h5> 아마 두 눈에 흙이 들어가도 성취가 힘들지 않을까 싶습니다..</h5>
+        </div>
+    </section>
+
+    <hr class="m-0"/>
+
+    <!-- Comment-->
+    <section class="resume-section" id="comments">
+        <div class="resume-section-content">
+            <h2 class="mb-4">Comments</h2><br>
+            <h5>친해지고 싶으시다구요?<br> 방명록을 남겨주세요! </h5>
+            <div class="mypost">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="url">
+                    <label>이름</label>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a content here" id="comment"
+                              style="height: 100px"></textarea>
+                    <label>방명록</label>
+                </div>
+                <button onclick="save_comment()" type="button" class="btn btn-dark">방명록 등록</button>
+            </div>
+        </div>
+        <div class="mycards" id="content-list"></div>
+    </section>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

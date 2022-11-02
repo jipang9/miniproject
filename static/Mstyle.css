@@ -1,0 +1,154 @@
+* {
+    font-family: 'Noto Serif KR', serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid black;*/
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+.container {
+    max-width: 1850px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 1.2rem 0;
+}
+
+header>p {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header>ul {
+    display: flex;
+}
+
+header>ul>li {
+    list-style-type: none;
+    margin-left: 1.5rem;
+}
+
+header>ul>li>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding-bottom: 5px;
+    color: gray;
+}
+
+header>ul>li:first-child>a {
+    color: black;
+    border-bottom: 5px solid black;
+}
+
+header>ul>li>a:hover {
+    color: darkgray;
+    border-bottom: 5px solid darkgray;
+}
+
+@media screen and (max-width:900px) {
+    header {
+        flex-direction: column;
+    }
+}
+
+#home {
+ /* background: url('/images/homebackground.png') center/cover no-repeat;*/
+  padding: 40px;/* 위아래 양옆 패딩을 40px */
+  padding-top: 120px;
+  text-align: center;/* 글자 중앙 배치 위해 */
+}
+
+.home__avatar {
+  width: 250px;/* 사진크기 폭 */
+  height: 250px;/* 사진크기 높이 */
+  border-radius: 50%;/* 사진원형 */
+  border: 2px solid grey;/* 사진 주위 테두리추가 */
+}
+
+.mypost {
+    width: 95%;
+    max-width: 500px;
+    margin: 20px auto 20px auto;
+
+    box-shadow: 0px 0px 3px 0px black;
+    padding: 20px;
+}
+
+.mypost > button {
+    margin-top: 15px;
+}
+
+.mycards {
+    width: 95%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.mycards > .card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+section {
+    padding: 0 3rem;
+    text-align: center;
+}
+
+section>p {
+    margin-bottom: 2rem;
+}
+
+section>p:first-child {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+section>p:last-of-type {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+section>a {
+    display: block;
+    border: 1px solid black;
+    width: 150px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+
+footer {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: black;
+}
+
+footer>a {
+    text-decoration: none;
+    color: black;
+}
