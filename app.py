@@ -63,14 +63,26 @@ def comment_delete():
 
 @app.route("/miran/post", methods=["POST"])
 def miniproject_post():
-   name_receive = request.form["name_give"]
-   comment_receive = request.form["comment_give"]
+   name_receive = request.form['name_give']
+   comment_receive = request.form['comment_give']
+
+   comment_list = list(db.mirancomment.find({}, {'_id': False}))
+   count = len(comment_list) + 1
+
    doc = {
+       'num': count,
        'name': name_receive,
        'comment': comment_receive
    }
    db.mirancomment.insert_one(doc)
    return jsonify({'msg': '방명록이 작성되었습니다'})
+
+@app.route("/miran/delete", methods=["POST"])
+def miniproject_delete():
+    num_receive = request.form['num_give']
+
+    db.mirancomment.delete_one({'num':int(num_receive)})
+    return jsonify({'msg': '방명록이 삭제되었습니다'})
 
 @app.route("/miran/get", methods=["GET"])
 def miniproject_get():

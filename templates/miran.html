@@ -49,12 +49,14 @@
                     for (let i = 0; i < rows.length; i++) {
                         let name = rows[i]['name']
                         let comment = rows[i]['comment']
+                        let num = rows[i]['num']
 
                         let temp_html = `<div class="card">
                                             <div class="card-body">
                                                 <blockquote class="blockquote mb-0">
                                                     <p>${comment}</p>
                                                     <footer class="blockquote-footer">${name}</footer>
+                                                    <button type="button" class="btn btn-outline-primary" onclick="delete_comment(${num})">삭제</button>
                                                 </blockquote>
                                             </div>
                                         </div>`
@@ -63,42 +65,55 @@
                 }
             });
         }
+
+        function delete_comment(num) {
+            $.ajax({
+                type: "POST",
+                url: "/miran/delete",
+                data: {num_give:num},
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
     </script>
 </head>
 <body>
-<div class = "container">
-    <header>
-        <p>내일배움캠프 Spring B-2조 김미란</p>
-    </header>
+    <div class = "container">
+        <header>
+            <p><img src="https://ifh.cc/g/X2MlVm.jpg">내일배움캠프 Spring B-2조 김미란</p>
+        </header>
 
-    <section id="home">
-        <div class="home__container">
-        <img src="https://i.pinimg.com/564x/0f/3a/8a/0f3a8a77054cec1172da03f6593f4175.jpg" alt="profile photo" class="home__avatar"/>
-            <p><br>안녕하세요. 저는 이번에 내일배움캠프에 참가하게 된 김미란입니다.<br>MBTI는 ISTP와 INTP에서 왔다갔다 하는 편입니다.
-                <br>책임감 있는 성격이 제 장점이라고 생각합니다.
-                <br>협업을 하는 데에 있어서 힘든 상황이 찾아오더라도
-                <br>포기하지 않고 배워가며 열심히 참여하겠습니다.
-                <br>감사합니다^^
-            </p>
-    </section>
+        <section id="home">
+            <div class="home__container">
+            <img src="https://i.pinimg.com/564x/0f/3a/8a/0f3a8a77054cec1172da03f6593f4175.jpg" alt="profile photo" class="home__avatar"/>
+                <p><br>안녕하세요. 저는 이번에 내일배움캠프에 참가하게 된 김미란입니다.<br>MBTI는 ISTP와 INTP에서 왔다갔다 하는 편입니다.
+                    <br>책임감 있는 성격이 제 장점이라고 생각합니다.
+                    <br>협업을 하는 데에 있어서 힘든 상황이 찾아오더라도
+                    <br>포기하지 않고 배워가며 열심히 참여하겠습니다.
+                    <br>감사합니다^^
+                </p>
+        </section>
 
-    <div class="mypost">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="url">
-            <label for="floatingInput">이름을 입력해주세요</label>
+        <div class="mypost">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="name" placeholder="url">
+                <label for="name">이름을 입력해주세요</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="comment"
+                    style="height: 100px"></textarea>
+                <label for="comment">내용을 입력해주세요</label>
+            </div>
+            <button onclick="save_comment()" type="button" class="btn btn-dark">방명록 남기기</button>
         </div>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="comment"
-                style="height: 100px"></textarea>
-            <label for="floatingTextarea2">내용을 입력해주세요</label>
+        <div class="mycards" id="comment-list">
         </div>
-        <button onclick="save_comment()" type="button" class="btn btn-dark">방명록 남기기</button>
+        <footer>
+            <img src="https://ifh.cc/g/X2MlVm.jpg">개인 블로그 주소 : <a href="https://velog.io/@h7359841">https://velog.io/@h7359841</a>
+        </footer>
     </div>
-    <div class="mycards" id="comment-list">
-    </div>
-    <footer>
-        개인 블로그 주소 : <a href="https://velog.io/@h7359841">https://velog.io/@h7359841</a>
-    </footer>
-</div>
 </body>
 </html>
