@@ -31,17 +31,22 @@ def mypage_sangwook():
 #  데이터 전송(url 확인할 것)
 @app.route('/jihwan/post', methods = ["POST"])
 def comment_post():
-    id_receive = request.form['id_give']
-    name_receive = request.form['name_give']
-    comment_receive = request.form['comment_give']
-    post = {
-        'id':id_receive,
-        'name':name_receive,
-        'comment':comment_receive
-    }
-    db.myComment.insert_one(post)
 
-    return jsonify({'msg':'방명록 작성 감사합니다.'})
+        id_receive = request.form['id_give']
+        name_receive = request.form['name_give']
+        comment_receive = request.form['comment_give']
+        post = {
+            'id':id_receive,
+            'name':name_receive,
+            'comment':comment_receive
+        }
+        if name_receive =='':
+            return 'jihwan.html'
+        if comment_receive =='':
+            return 'jihwan.html'
+        else:
+            db.myComment.insert_one(post)
+            return jsonify({'msg':'방명록 작성 감사합니다.'})
 
 @app.route('/jihwan/get', methods=["GET"])
 def comment_get():

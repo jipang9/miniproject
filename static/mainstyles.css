@@ -18,28 +18,36 @@
 .top > h1 {
     font-size: 50px;
 }
+.mainImage{
+    margin-right: 460px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left : 438px;
+    border-radius: 30px;
+    height: 300px;
+}
 
-/* 부트스트랩 시작*/
-
+.row{
+    padding: 50px;
+    margin-top: 200px;
+}
+/* 부트스트랩 시작 우리꺼에 맞게 수정함 */
 body {
     background-color: #eee
 }
-
 .contentCard{
-    background-color: #e5c7ca;
-    margin-right: 300px;
-}
 
+    margin-right: 500px;
+}
 .card {
     border: black;
-    border-radius: 10px
+    border-radius: 20px;
 }
-
 .c-detail {
     font-weight: 100;
     font-size: 25px
 }
-
 .icon {
     width: 100px;
     height: 100px;
@@ -49,7 +57,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 .badge span {
     background-color: #fffbec;
     width: 60px;
@@ -61,15 +68,16 @@ body {
     justify-content: center;
     align-items: center
 }
-
+.myImage{
+    border-radius: 10px;
+}
 /* 직접 제작한 버튼 디자인*/
-
 .badge > button {
     margin-top: 30px;
     background-color: #fffbec;
     width: 70px;
     height: 30px;
-    color: skyblue;
+    color: cornflowerblue;
     border: 0;
     outline: 0;
     border-radius: 5px;
