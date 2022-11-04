@@ -31,7 +31,6 @@ def mypage_sangwook():
 #  데이터 전송(url 확인할 것)
 @app.route('/jihwan/post', methods = ["POST"])
 def comment_post():
-
         id_receive = request.form['id_give']
         name_receive = request.form['name_give']
         comment_receive = request.form['comment_give']
@@ -47,6 +46,19 @@ def comment_post():
         else:
             db.myComment.insert_one(post)
             return jsonify({'msg':'방명록 작성 감사합니다.'})
+
+# @app.route('/jihwan/update',methods=["UPDATE"])
+# def comment_update():
+#
+#     updateCommentList= list(db.myComment.find({},{'_id':False}))
+#
+#     name_receive = request.form['name_give']
+#     comment_receive = request.form['comment_give']
+#
+#     db.myComment.update_one({'name':name_receive},{'$set':{'age':19}})
+#
+#     # 업데이트 내용 넣기
+#     return render_template('jihwan.html')
 
 @app.route('/jihwan/get', methods=["GET"])
 def comment_get():

@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac2dd8f-fb5d-4c68-959e-ab1da9cd9d60" name="변경" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/MiniProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MiniProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/javascript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sangwook.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sangwook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/jihwan.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/jihwan.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +123,8 @@
       <workItem from="1667434518277" duration="25251000" />
       <workItem from="1667472704944" duration="296000" />
       <workItem from="1667473004140" duration="67000" />
-      <workItem from="1667484160408" duration="52000" />
+      <workItem from="1667484160408" duration="236000" />
+      <workItem from="1667524505375" duration="8398000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <created>1667408001848</created>
@@ -167,12 +169,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>85</line>
+          <line>97</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>107</line>
+          <line>119</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -184,7 +186,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MiniProject$app.coverage" NAME="app 커버리지 결과" MODIFIED="1667480296409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MiniProject$app.coverage" NAME="app 커버리지 결과" MODIFIED="1667527820487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/miniproject$app.coverage" NAME="app 커버리지 결과" MODIFIED="1667473022570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
