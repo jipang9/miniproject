@@ -39,11 +39,11 @@
             })
         }
 
-        function delete_comment(content, name) {
+        function delete_comment(id) {
             $.ajax({
                 type: 'DELETE',
-                url: '/jihwan/update',
-                data: {id_delete: id},
+                url: '/jihwan/delete',
+                data: {id_delete:id},
                 success: function (response) {
                     window.location.reload()
                 }
@@ -69,7 +69,6 @@
                                                             <footer class="blockquote-footer">${name}</footer>
                                                         </blockquote>
                                                         <button id = 'output' class="Dbutton" onclick="delete_comment(${id})" type="button">방명록 삭제</button>
-<!--                                                        <button id = 'output' class="Dbutton" onclick="delete_comment(${conent},${name})" type="button">방명록 수정</button>-->
                                                     </div>
                                                 </div>`
                         $('#content-list').append(temp_html)
